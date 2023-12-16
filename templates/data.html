@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="data">            
+    <table >
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Apt Type</th>
+                <th>Apt Time</th>
+                <th>Stage</th>
+            </tr>
+        </thead>
+        <!-- Used data attributes of HTML to store information/variable that can be accessed by JavaScript.-->
+        <tbody id="tableBody"  data-start-index={{customer_info_list.start_index}}>  
+            {% for customer in customer_info_list %}
+                <tr>
+                    <td class="index-cell"></td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.appointment_type}}</td>
+                    <td>{{customer.appointment_time}}</td>
+                    <td>{{customer.stage}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% include 'pagination.html' %}
+</div>

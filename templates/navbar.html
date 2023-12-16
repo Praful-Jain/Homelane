@@ -1,0 +1,107 @@
+{% load static %}
+
+<div class="navbar">
+    <form action="{% url 'home_view' %}" method="GET">
+        <div>
+            <label for="name">Enter name:</label>
+            <input type="text" name="name" id="name" placeholder="Name">
+        </div>
+    
+        <div>
+            <label for="type">Type Filter:</label>
+            <select id="type" name="apt_type">
+                <option value="" selected disabled hidden>Filter</option>
+                <option value="Virtual Meeting">Virtual Meeting</option>
+                <option value="Square Showroom Visit">Square Showroom Visit</option>
+            </select>
+            
+        </div>
+
+        <div>
+            <label for="stage">Stage Filter:</label>
+            <select id="stage" name="stage">
+                <option value="" selected disabled hidden>Stage Filter</option>
+                <option value="Initial Quote Sent">Initial Quote Sent</option>
+                <option value="Payment Stage A Reached">Payment Stage A Reached</option>
+                <option value="Payment Stage B Reached">Payment Stage B Reached</option>
+                <option value="Payment Stage C Reached">Payment Stage C Reached</option>
+                <option value="Payment Done">Payment Done</option>
+            </select>
+            
+        </div>
+
+        <button type="reset" style="color: red; background-color: white;">Reset</button>
+        <button type="submit" style="background-color: red;">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    Getting issue with reset button ... because the defalut values of the form fields changes
+{% load static %}
+
+<div class="navbar">
+    <form action="{% url 'home_view' %}" method="GET">
+        <div>
+            <label for="name">Enter name:</label>
+            <input type="text" name="name" id="name" placeholder="Name" value="{{name}}">
+        </div>
+    
+        <div>
+            <label for="type">Type Filter:</label>
+            <select id="type" name="apt_type">
+                <option value="" selected disabled hidden>Apt Filter</option>
+                <option value="Virtual Meeting" {% if apt_type == "Virtual Meeting" %}selected{% endif %}>Virtual Meeting</option>
+                <option value="Square Showroom Visit" {% if apt_type == "Square Showroom Visit" %}selected{% endif %}>Square Showroom Visit</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="stage">Stage Filter:</label>
+            <select id="stage" name="stage">
+                <option value="" selected disabled hidden>Stage Filter</option>
+                <option value="Initial Quote Sent" {% if stage == "Initial Quote Sent" %}selected{% endif %}>Initial Quote Sent</option>
+                <option value="Payment Stage A Reached" {% if stage == "Payment Stage A Reached" %}selected{% endif %}>Payment Stage A Reached</option>
+                <option value="Payment Stage B Reached" {% if stage == "Payment Stage B Reached" %}selected{% endif %}>Payment Stage B Reached</option>
+                <option value="Payment Stage C Reached" {% if stage == "Payment Stage C Reached" %}selected{% endif %}>Payment Stage C Reached</option>
+                <option value="Payment Done" {% if stage == "Payment Done" %}selected{% endif %}>Payment Done</option>
+            </select>
+        </div>
+
+        <button type="reset" style="color: red; background-color: white;" onclick="resetForm()">Reset</button>
+        <button type="submit" style="background-color: red;">Submit</button>
+    </form>
+</div> -->

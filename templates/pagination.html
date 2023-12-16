@@ -1,0 +1,23 @@
+<div class="pagination" id="pagination">
+    <span>
+        {% if customer_info_list.has_previous %}
+            <form action="{% url 'home_view' %}" method="GET">
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="apt_type" value="{{ apt_type }}">
+                <input type="hidden" name="stage" value="{{ stage }}">
+                <input type="hidden" name="page" value="{{ customer_info_list.previous_page_number }}">
+                <button type="submit">Previous</button>
+            </form>
+        {% endif %}
+        <span>{{ customer_info_list.number }}</span>
+        {% if customer_info_list.has_next %}
+            <form action="{% url 'home_view' %}" method="GET">
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="apt_type" value="{{ apt_type }}">
+                <input type="hidden" name="stage" value="{{ stage }}">
+                <input type="hidden" name="page" value="{{ customer_info_list.next_page_number }}">
+                <button type="submit">Next</button>
+            </form>
+        {% endif %}
+    </span>
+</div>
