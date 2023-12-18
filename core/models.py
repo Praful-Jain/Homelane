@@ -77,7 +77,6 @@ class BackboneCustomerInfo(models.Model):
     ]
 
     id = models.BigAutoField(primary_key=True)
-    # cust_id = models.OneToOneField(CustomerProfile, on_delete=models.CASCADE)
     appointment_time = models.DateTimeField(auto_now_add=True)
     appointment_type = models.CharField(max_length=100, choices=APPOINTMENT_TYPE_CHOICES)
     stage = models.CharField(max_length=100, choices=STAGE_CHOICES)
@@ -268,7 +267,6 @@ class BackboneCustomerInfo(models.Model):
 
     class Meta:
         indexes = [
-            # models.Index(fields=['cust_id', 'is_deleted']),
             models.Index(fields=['lead_source']),
             models.Index(fields=['appointment_time']),
             models.Index(fields=['nps_percentage_40']),

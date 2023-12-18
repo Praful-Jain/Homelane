@@ -33,7 +33,6 @@ class HomeView(View):
             customers_info_list = customers_info_list.filter(user_id__appointment_type=apt_type)
         if stage:
             customers_info_list = customers_info_list.filter(user_id__stage=stage)
-        
         return customers_info_list
         
     def get(self, request, *args, **kwargs):
@@ -57,6 +56,9 @@ class HomeView(View):
 
 
 
+
+
+
 # <a href="?page={{ customer_info_list.previous_page_number }}">Previous</a>
 # Using "?page={{ customer_info_list.previous_page_number }}" in the href attribute is a valid way to 
 # include the page parameter as a query parameter in the URL.
@@ -64,7 +66,7 @@ class HomeView(View):
 # In the redirect function in Django, the reverse function is used internally to generate URLs based on view names.
 # The reverse function, by default, generates URLs with path parameters (e.g., /some_path/1/) rather than query parameters (e.g., /some_path/?page=1)
 # return redirect(f'home_view/?page={page_number}')         eg. url = "/2" not "/?page=2"
-# SEE -- https://chat.openai.com/c/b1aee969-b318-4b15-9dee-a2950bf39e65
+
 
 
 
@@ -77,6 +79,6 @@ class HomeView(View):
 #         stage=F('user_id__stage'),
 #         index=Value(1, output_field=IntegerField()),  # You can replace this with the desired index
 #     )
-#  SEE -- https://chat.openai.com/c/e9dd0230-3b34-4c34-b8af-d828e5d8b4ab
+
 # When you pass a serialized queryset (or any data) to a template, it becomes plain data
     
