@@ -9,6 +9,7 @@ class HomeView(View):
     template_name = 'homelane.html'  
     per_page = 10   # number of records to be rendered per page
     
+    # Django's ORM uses 'lazy loading' feature, this means that the actual database query is executed only when the data is needed.
     def getCustomerList(self, name, apt_type, stage):
         backbone_customer_events = BackboneCustomerEvent.objects.filter(showroom_id__supplier_id=supplier_id)   # From BackboneCustomerEvent filter the records having supplier_id=vendor_id
         cust_ids_for_vendor = backbone_customer_events.values_list('cust_id', flat=True)    #  Get cust_ids associated with this vendor
@@ -38,10 +39,11 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         name, apt_type, stage = (request.GET.get(key, '') for key in ['name', 'apt_type', 'stage'])
         
-        customer_info_list = self.getCustomerList(name, apt_type, stage)
+        customer_info_list = self.getCustomerList(name, apt_type, stage)    #  customer_info_list queryset is a representation of the SQL query that will be executed when the data is requested.
         
-        paginator = Paginator(customer_info_list, self.per_page)        # Paginator class object
-        page_number = request.GET.get('page',1) 
+        paginator = Paginator(customer_info_list, self.per_page)        # Paginator class object, the paginator doesn't immediately fetch all records from the database. 
+        page_number = request.GET.get('page',1)         
+        # Paginator only fetches the subset of records needed for the current page. 
         page_object = paginator.get_page(page_number)   # Page object     # get_page() method will handle outofbound and datatype errors  
         
         return render(request, self.template_name, {'customer_info_list':page_object, 'name':name, 'apt_type':apt_type, 'stage':stage, })
