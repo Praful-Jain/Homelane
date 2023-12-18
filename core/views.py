@@ -26,7 +26,6 @@ class HomeView(View):
         )
         
         # Filtering
-        # The filtering is done before annotating to avoid overwriting the queryset
         if name:
             customers_info_list = customers_info_list.filter(customer_profile_id__name__icontains=name)  # __icontains, __iexact lookups
         if apt_type:
